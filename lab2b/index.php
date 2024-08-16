@@ -2,14 +2,14 @@
 
 define('CUSTOMERS_FILE_PATH', 'customers-100000.csv');
 
-function get_hundred_customers_data()
+function get_ten_thousand_customers_data()
 {
     $opened_file_handler = fopen(CUSTOMERS_FILE_PATH, 'r');
 
     $data = [];
     $headers = [];
     $row_count = 0;
-    while (!feof($opened_file_handler)) {
+    while ($row_count < 10000) {
 
         $row = fgetcsv($opened_file_handler, 1024);
         if (!empty($row)) {
@@ -32,7 +32,7 @@ function get_hundred_customers_data()
 
 $time_start = microtime(true);
 
-$customers = get_hundred_customers_data();
+$customers = get_ten_thousand_customers_data();
 
 $time_end = microtime(true);
 
