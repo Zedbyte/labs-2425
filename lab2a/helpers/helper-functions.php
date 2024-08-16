@@ -11,3 +11,16 @@ function dump_session()
         </div>
     <?php
 }
+
+function check_if_header_exists($filename, $userData) {
+    $file = fopen($filename, 'r'); 
+
+    if (($firstLine = fgetcsv($file)) !== false) {
+        if ($firstLine === array_keys($userData)) {
+            fclose($file);
+            return true;
+        }
+    }
+    fclose($file);
+    return false;
+}

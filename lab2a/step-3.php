@@ -1,26 +1,31 @@
 <?php
 
-require "helpers/helper-functions.php";
-
 session_start();
 
-$birthdate = $_POST['birthdate'];
-$sex = $_POST['sex'];
-$address = $_POST['address'];
+/**
+ * 
+ * To avoid redirecting chain up to step-1.
+ * Check if user has already filled program and address.
+ */
+if (
+  (empty($_POST['program']) || empty($_POST['address'])) &&
+  (empty($_SESSION['program']) || empty($_SESSION['address']))
+  ) 
+  {
+  header('Location: step-2.php');
+  exit();
+}
 
-$_SESSION['birthdate'] = $birthdate;
-$_SESSION['sex'] = $sex;
+$program = empty($_SESSION['program']) ? $_POST['program'] : $_SESSION['program'];
+$address = empty($_SESSION['address']) ? $_POST['address'] : $_SESSION['address'];
+
+$_SESSION['program'] = $program;
 $_SESSION['address'] = $address;
+
+require "partials/header.php";
 
 dump_session();
 ?>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>IPT10 Laboratory Activity #2</title>
-    <link rel="icon" href="https://phpsandbox.io/assets/img/brand/phpsandbox.png">
-    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.15.0.min.css" />   
-</head>
 <body>
 
 <section class="p-section--hero">
@@ -37,21 +42,14 @@ dump_session();
         <form action="thank-you.php" method="POST">
 
           <fieldset>
-            <label>Contact Number</label>
-            <input type="text" name="contact_number" placeholder="+639123456789" />
-
-            <label>Program</label>
-            <select name="program">
-              <option disabled="disabled" selected="">Select an option</option>
-              <option value="cs">Computer Science</option>
-              <option value="it">Information Technology</option>
-              <option value="is">Information Systems</option>
-              <option value="se">Software Engineering</option>
-              <option value="ds">Data Science</option>
-            </select>
-
+            <label>Email address</label>
+            <input type="email" name="email" placeholder="example@canonical.com" autocomplete="email" required>
+  
+            <label>Password</label>
+            <input type="password" name="password" placeholder="******" autocomplete="current-password" required>
+            
             <label class="p-checkbox--inline">
-            <input type="checkbox" name="agree">
+            <input type="checkbox" name="agree" required>
             </label>
             I agree to the terms and conditions...
             

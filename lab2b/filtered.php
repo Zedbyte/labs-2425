@@ -1,6 +1,6 @@
 <?php
 
-define('CUSTOMERS_FILE_PATH', 'customers-100.csv');
+define('CUSTOMERS_FILE_PATH', 'customers-100000.csv');
 
 function get_hundred_customers_data( $filter_letter )
 {
@@ -34,7 +34,14 @@ function get_hundred_customers_data( $filter_letter )
 
 $chosen_letter = $_GET['letter'];
 
+$time_start = microtime(true);
+
 $customers = get_hundred_customers_data($chosen_letter);
+
+$time_end = microtime(true);
+
+
+$time = $time_end - $time_start;
 
 ?>
 <html>
@@ -57,6 +64,9 @@ $customers = get_hundred_customers_data($chosen_letter);
 <small>
 The dataset is retrieved from this URL <a href="https://www.datablist.com/learn/csv/download-sample-csv-files">https://www.datablist.com/learn/csv/download-sample-csv-files</a>
 </small>
+<h2>
+    <?php echo $time; ?> <br>seconds to retrieve data
+</h2>
 <table aria-label="Customers Dataset">
     <thead>
         <tr>

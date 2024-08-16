@@ -1,0 +1,3 @@
+<?php
+
+dump_session();
