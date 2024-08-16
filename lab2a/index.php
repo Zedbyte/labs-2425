@@ -50,6 +50,8 @@ require "partials/header.php";
         <button>See All Data</button>
     </form>
 
+    <a href="https://github.com/Zedbyte/labs-2425.git" target="_blank">Check my repository!</a>
+
   </div>
 </section>
 
