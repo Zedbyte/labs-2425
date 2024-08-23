@@ -1,0 +1,5 @@
+fullname,birthdate,contact_number,sex,program,address,email,password,agree,age
+"John Doe","January 2, 2001",+63912032115,male,it,"Angeles City",johndoe@gmail.com,900150983cd24fb0d6963f7d28e17f72,on,23
+"Jane Doe","February 10, 2003",+639120323243,female,cs,"San Fernando",janedoe@gmail.com,900150983cd24fb0d6963f7d28e17f72,on,21
+"All Doe","March 11, 2011",+639122432675,male,ds,"Mabalacat City",alldoe@gmail.com,2efe0008f59e6e614481f361c6f0fdb9,on,13
+"Elon Musk","February 22, 2019",+639122432675,male,it,California,elonmusk@gmail.com,9e887375eaba77dc7568e4048268520e,on,5
