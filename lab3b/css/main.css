@@ -4,6 +4,7 @@ body {
 
 h4 {
   text-align: center;
+  color: white;
 }
 
 .cpy {
@@ -49,6 +50,12 @@ h4 {
     background: linear-gradient(to top right, #4f46e5, #0f766e, #c084fc);
     filter: blur(118px); 
     z-index: -1;
+}
+
+
+.file_image {
+  border-radius: 10px;
+  border: 1px solid black;
 }
 
 .file-upload-form {

@@ -17,8 +17,16 @@
     <div class="grid">
       <div class="col-6">
         <div class="card">
+        <form method="POST" action="uploaded.php" enctype="multipart/form-data">
+          <h3 style="text-align:center;">Select File Type:</h3>
+          <select name="file_type" id="file_type" required>
+            <option value="">Select File Type</option>
+            <option value="pdf">PDF</option>
+            <option value="audio">Audio</option>
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+          </select>
           <h3 style="text-align:center;">Upload File</h3>
-          <form method="POST" action="uploaded.php" enctype="multipart/form-data">
             <label for="file" class="file-upload-label">
               <div class="file-upload-design">
                 <svg viewBox="0 0 640 512" height="1em">
@@ -30,7 +38,7 @@
                 <p>or</p>
                 <span class="browse-button">Browse file</span>
               </div>
-              <input id="file" type="file" name="video_file" accept=".mp4" multiple/>
+              <input id="file" type="file" name="file_upload" required/>
             </label>
               <p class="file-name" id="file-name">No file chosen</p>
             <br>
@@ -40,16 +48,11 @@
       </div>
 
       <div class="col-6" style="display: flex; justify-content:center;">
-        <img src="https://www.auf.edu.ph/home/images/mascot/CCS.png" alt="College of Computing Studies" width="600">
+        <img src="https://www.auf.edu.ph/home/images/mascot/CCS.png" alt="College of Computing Studies" width="100%">
       </div>
     </div>
   </main>
 
-  <script>
-  document.querySelector('#file').addEventListener('change', function(event) {
-      const fileName = event.target.files.length > 0 ? event.target.files[0].name : 'No file chosen';
-      document.querySelector('.file-name').textContent = fileName;
-    });
-  </script>
+  <script src="./javascript/validations.js"></script>
 </body>
 </html>

@@ -1,10 +1,36 @@
 <?php
 
-if (isset($_FILES['video_file'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_upload']) && isset($_POST['file_type'])) {
     $upload_directory = getcwd() . '/uploads/';
-    $file_name = $_FILES['video_file']['name'];
+    $file_name = $_FILES['file_upload']['name'];
     $uploaded_file = $upload_directory . basename($file_name);
-    $temporary_file = $_FILES['video_file']['tmp_name'];
+    $temporary_file = $_FILES['file_upload']['tmp_name'];
+    $selectedType = $_POST['file_type'];
+
+    $allowedExtensions = [];
+    switch ($selectedType) {
+        case 'pdf':
+            $allowedExtensions = ['pdf'];
+            break;
+        case 'audio':
+            $allowedExtensions = ['mp3', 'wav', 'ogg'];
+            break;
+        case 'image':
+            $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+            break;
+        case 'video':
+            $allowedExtensions = ['mp4', 'avi', 'mov'];
+            break;
+    }
+    $fileExtension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+    // if selected type and file does not match.
+    if (!in_array($fileExtension, $allowedExtensions)) {
+        echo 'Error in file type.';
+        echo '<meta http-equiv="refresh" content="4;url=index.php">';
+        // header("Location: index.php");
+        exit;
+    }
+
 
     if (!file_exists($upload_directory)) {
         mkdir($upload_directory);
@@ -12,20 +38,33 @@ if (isset($_FILES['video_file'])) {
 
     if (move_uploaded_file($temporary_file, $uploaded_file)) {
         $relative_path = 'uploads/';
-        $video_path = $relative_path . $file_name;
+        $file_path = $relative_path . $file_name;
 
         require './partials/header.php'
         ?>
             <body>
                 <div class="h-100 container">
+                    <div class="background-blur"></div>
                     <div class="h-100 grid">
                         <div class="file__container">
-                        <video width="100%" height="100%" controls>
-                            <source src="<?= $video_path ?>" type="video/mp4">
-                        </video>
+                        <?php if ($selectedType == 'image') { ?>
+                            <img class="file_image" src="<?php echo $file_path; ?>" alt="Uploaded Image"/>
+                        <?php } elseif ($selectedType == 'audio') { ?>
+                            <audio controls>
+                                <source src='<?php echo $file_path; ?>' type='audio/mp3'>Your browser does not support the audio element.
+                            </audio>
+                        <?php } elseif ($selectedType == 'video') { ?>
+                            <video width='100%' height='100%' controls>
+                                <source src='<?php echo $file_path; ?>' type='video/mp4'>Your browser does not support the video tag.
+                            </video>
+                        <?php } elseif ($selectedType == 'pdf') { ?>
+                            <object data="<?php echo $file_path ?>" type="application/pdf" width="100%" height="100%">
+                            <p>Unable to display PDF file. <a href="<?php echo $file_path ?>">Download</a> instead.</p>
+                            </object>
+                        <?php } ?>
                         </div>
                         <div class="metadata__container">
-                            <h4>This is the information of the video file:</h4>
+                            <h4>This is the information of the <?php echo $selectedType; ?> file:</h4>
                             <?php
                                 echo '<pre>';
                                     echo '<ul>';
@@ -57,6 +96,10 @@ if (isset($_FILES['video_file'])) {
     }  else {
         echo 'Failed to upload video file';
     }
+}
+else {
+    header("Location: index.php");
+    exit;
 }
 
 
