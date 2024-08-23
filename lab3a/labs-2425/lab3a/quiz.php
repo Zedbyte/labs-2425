@@ -44,7 +44,16 @@ $target = 'result.php';
 
 
 <section class="section">
-    <form method="POST" action="<?php echo $target; ?>">
+    <progress class="progress is-primary" value="66" max="100">66%</progress>
+
+    <div class="section">
+        <h1 id="timer" class="title">60 seconds remaining</h1>
+        <progress class="clock progress is-primary" value="100" max="100">
+            100%
+        </progress>
+    </div>
+
+    <form method="POST" action="<?php echo $target; ?>" id="auto-submit-form">
         <input type="hidden" name="complete_name" value="<?php echo $complete_name; ?>" />
         <input type="hidden" name="email" value="<?php echo $email; ?>" />
         <input type="hidden" name="birthdate" value="<?php echo $birthdate; ?>" />
@@ -55,30 +64,31 @@ $target = 'result.php';
 
         <?php
         foreach($questions['questions'] as $key => $value): ?>
-            <h1 class="title">Question <?php echo $key+1; ?> / <?php echo MAX_QUESTION_NUMBER; ?></h1>
-            <h2 class="title">
-                <?php echo $value['question']; ?>
-            </h2>
+            <div class="box">
+                <h1 class="title">Question <?php echo $key+1; ?> / <?php echo MAX_QUESTION_NUMBER; ?></h1>
+                <h2 class="subtitle">
+                    <?php echo $value['question']; ?>
+                </h2>
 
-            <?php foreach($value['options'] as $index => $option): ?>
-                <div class="field">
-                    <div class="control">
-                        <label class="radio">
-                            <input type="radio"
-                                name="answers<?php echo $key?>[]"
-                                value="<?php echo $option['key']; ?>" />
-                                <?php echo $option['value']; ?>
-                        </label>
+                <?php foreach($value['options'] as $index => $option): ?>
+                    <div class="field">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio"
+                                    name="answers<?php echo $key?>[]"
+                                    value="<?php echo $option['key']; ?>" />
+                                    <?php echo $option['value']; ?>
+                            </label>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        <br>
-        <br>
+                <?php endforeach; ?>
+            </div>
         <?php endforeach; ?>
 
 
         <!-- Start Quiz button -->
         <button type="submit" class="button">Submit</button>
+        <script src="../lab3a/javascript/quiz.js"></script>
     </form>
 </section>
 

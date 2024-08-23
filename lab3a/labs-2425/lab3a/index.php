@@ -7,6 +7,7 @@
 </head>
 <body>
 <section class="section">
+    <progress class="progress is-primary" value="0" max="100">0%</progress>
     <h1 class="title">User Registration</h1>
     <h2 class="subtitle">
         This is the IPT10 PHP Quiz Web Application Laboratory Activity. Please register
@@ -16,14 +17,14 @@
         <div class="field">
             <label class="label">Name</label>
             <div class="control">
-                <input class="input" type="text" name="complete_name" placeholder="Complete Name">
+                <input class="input required" type="text" name="complete_name" placeholder="Complete Name">
             </div>
         </div>
 
         <div class="field">
             <label class="label">Email</label>
             <div class="control">
-                <input class="input" name="email" type="email" />
+                <input class="input required" name="email" type="email" placeholder="Email Address"/>
             </div>
         </div>
 
@@ -37,7 +38,7 @@
         <div class="field">
             <label class="label">Contact Number</label>
             <div class="control">
-                <input class="input" name="contact_number" type="number" />
+                <input class="input" name="contact_number" type="number" placeholder="Contact Number"/>
             </div>
         </div>
 

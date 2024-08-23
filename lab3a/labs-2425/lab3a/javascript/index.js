@@ -1,5 +1,5 @@
-$nextBtn = document.querySelector('.button');
-$inputs = document.querySelectorAll('.input');
+let nextBtn = document.querySelector('.button');
+let inputs = document.querySelectorAll('.required');
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -8,7 +8,7 @@ function isValidEmail(email) {
 
 function checkInputs() {
     let allFilled = true;
-    $inputs.forEach(input => {
+    inputs.forEach(input => {
         const name = input.getAttribute('name');
         const value = input.value.trim();
         
@@ -22,10 +22,10 @@ function checkInputs() {
         }
     });
 
-    $nextBtn.disabled = !allFilled;
+    nextBtn.disabled = !allFilled;
 }
 
-$inputs.forEach(input => {
+inputs.forEach(input => {
     input.addEventListener('input', checkInputs);
 });
 
