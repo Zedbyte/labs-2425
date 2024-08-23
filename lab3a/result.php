@@ -116,17 +116,31 @@ if ($score == 500) {
                                 $c_answer = $questions['answers'][$i];
                                 $u_answer = $answers[$i];
 
+                                $options = $questions['questions'][$i]['options'];
+
+                                $c_answer_text = '';
+                                $u_answer_text = '';
+                                
+                                foreach ($options as $option) {
+                                    if ($option['key'] === $c_answer) {
+                                        $c_answer_text = $option['value'];
+                                    }
+                                    if ($option['key'] === $u_answer) {
+                                        $u_answer_text = $option['value'];
+                                    }
+                                }
+
                                 $class = "is-danger";
                                 if ($c_answer === $u_answer) {
                                     $class = "is-success";
                                 }
                             ?>
                             <td class="<?=$class?>">
-                                <?php echo $u_answer; ?>
+                                <?php echo $u_answer . '. ' . $u_answer_text; ?>
                             </td>
 
                             <td class="is-success">
-                                <?php echo $c_answer; ?>
+                                <?php echo $c_answer . '. ' . $c_answer_text; ?>
                             </td>
                         </tr>
                     <?php } ?>
