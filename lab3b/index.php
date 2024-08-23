@@ -30,7 +30,7 @@
                 <p>or</p>
                 <span class="browse-button">Browse file</span>
               </div>
-              <input id="file" type="file" name="mp3_file" accept=".mp3" multiple/>
+              <input id="file" type="file" name="image_file" accept="image/*" multiple/>
             </label>
               <p class="file-name" id="file-name">No file chosen</p>
             <br>

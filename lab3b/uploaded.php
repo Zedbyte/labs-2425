@@ -1,10 +1,10 @@
 <?php
 
-if (isset($_FILES['mp3_file'])) {
+if (isset($_FILES['image_file'])) {
     $upload_directory = getcwd() . '/uploads/';
-    $file_name = $_FILES['mp3_file']['name'];
+    $file_name = $_FILES['image_file']['name'];
     $uploaded_file = $upload_directory . basename($file_name);
-    $temporary_file = $_FILES['mp3_file']['tmp_name'];
+    $temporary_file = $_FILES['image_file']['tmp_name'];
 
     if (!file_exists($upload_directory)) {
         mkdir($upload_directory);
@@ -12,7 +12,7 @@ if (isset($_FILES['mp3_file'])) {
 
     if (move_uploaded_file($temporary_file, $uploaded_file)) {
         $relative_path = 'uploads/';
-        $mp3_path = $relative_path . $file_name;
+        $image_path = $relative_path . $file_name;
 
         require './partials/header.php'
         ?>
@@ -20,13 +20,10 @@ if (isset($_FILES['mp3_file'])) {
                 <div class="h-100 container">
                     <div class="h-100 grid">
                         <div class="file__container">
-                        <audio controls>
-                            <source src="<?php echo $mp3_path ?>" type="audio/mp3">
-                            Your browser does not support the audio element.
-                        </audio>
+                        <img src="<?php echo $image_path ?>">
                         </div>
                         <div class="metadata__container">
-                            <h4>This is the information of the mp3 file:</h4>
+                            <h4>This is the information of the image file:</h4>
                             <?php
                                 echo '<pre>';
                                     echo '<ul>';
@@ -56,7 +53,7 @@ if (isset($_FILES['mp3_file'])) {
             <?php
             exit;
     }  else {
-        echo 'Failed to upload mp3 file';
+        echo 'Failed to upload image file';
     }
 }
 
