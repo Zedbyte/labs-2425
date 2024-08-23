@@ -17,6 +17,7 @@ h4 {
 .file__container {
   display: flex;
   justify-content: center;
+  align-items:center;
 }
 
 .metadata__container,

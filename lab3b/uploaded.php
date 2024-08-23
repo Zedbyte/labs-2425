@@ -1,10 +1,10 @@
 <?php
 
-if (isset($_FILES['pdf_file'])) {
+if (isset($_FILES['mp3_file'])) {
     $upload_directory = getcwd() . '/uploads/';
-    $file_name = $_FILES['pdf_file']['name'];
+    $file_name = $_FILES['mp3_file']['name'];
     $uploaded_file = $upload_directory . basename($file_name);
-    $temporary_file = $_FILES['pdf_file']['tmp_name'];
+    $temporary_file = $_FILES['mp3_file']['tmp_name'];
 
     if (!file_exists($upload_directory)) {
         mkdir($upload_directory);
@@ -12,7 +12,7 @@ if (isset($_FILES['pdf_file'])) {
 
     if (move_uploaded_file($temporary_file, $uploaded_file)) {
         $relative_path = 'uploads/';
-        $pdf_path = $relative_path . $file_name;
+        $mp3_path = $relative_path . $file_name;
 
         require './partials/header.php'
         ?>
@@ -20,12 +20,13 @@ if (isset($_FILES['pdf_file'])) {
                 <div class="h-100 container">
                     <div class="h-100 grid">
                         <div class="file__container">
-                        <object data="<?php echo $pdf_path ?>" type="application/pdf" width="100%" height="100%">
-                        <p>Unable to display PDF file. <a href="<?php echo $pdf_path ?>">Download</a> instead.</p>
-                        </object>
+                        <audio controls>
+                            <source src="<?php echo $mp3_path ?>" type="audio/mp3">
+                            Your browser does not support the audio element.
+                        </audio>
                         </div>
                         <div class="metadata__container">
-                            <h4>This is the information of the PDF file:</h4>
+                            <h4>This is the information of the mp3 file:</h4>
                             <?php
                                 echo '<pre>';
                                     echo '<ul>';
@@ -55,7 +56,7 @@ if (isset($_FILES['pdf_file'])) {
             <?php
             exit;
     }  else {
-        echo 'Failed to upload PDF file';
+        echo 'Failed to upload mp3 file';
     }
 }
 
