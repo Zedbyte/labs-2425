@@ -1,10 +1,10 @@
 <?php
 
-if (isset($_FILES['image_file'])) {
+if (isset($_FILES['video_file'])) {
     $upload_directory = getcwd() . '/uploads/';
-    $file_name = $_FILES['image_file']['name'];
+    $file_name = $_FILES['video_file']['name'];
     $uploaded_file = $upload_directory . basename($file_name);
-    $temporary_file = $_FILES['image_file']['tmp_name'];
+    $temporary_file = $_FILES['video_file']['tmp_name'];
 
     if (!file_exists($upload_directory)) {
         mkdir($upload_directory);
@@ -12,7 +12,7 @@ if (isset($_FILES['image_file'])) {
 
     if (move_uploaded_file($temporary_file, $uploaded_file)) {
         $relative_path = 'uploads/';
-        $image_path = $relative_path . $file_name;
+        $video_path = $relative_path . $file_name;
 
         require './partials/header.php'
         ?>
@@ -20,10 +20,12 @@ if (isset($_FILES['image_file'])) {
                 <div class="h-100 container">
                     <div class="h-100 grid">
                         <div class="file__container">
-                        <img src="<?php echo $image_path ?>">
+                        <video width="100%" height="100%" controls>
+                            <source src="<?= $video_path ?>" type="video/mp4">
+                        </video>
                         </div>
                         <div class="metadata__container">
-                            <h4>This is the information of the image file:</h4>
+                            <h4>This is the information of the video file:</h4>
                             <?php
                                 echo '<pre>';
                                     echo '<ul>';
@@ -53,7 +55,7 @@ if (isset($_FILES['image_file'])) {
             <?php
             exit;
     }  else {
-        echo 'Failed to upload image file';
+        echo 'Failed to upload video file';
     }
 }
 
