@@ -1,0 +1,97 @@
+body {
+  height: 100dvh;
+}
+
+h4 {
+  text-align: center;
+}
+
+.cpy {
+  width: fit-content;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.file__container {
+  display: flex;
+  justify-content: center;
+}
+
+.metadata__container,
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  padding: 1em;
+  border: 1px solid #0e1118;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #13171f;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+
+.background-blur {
+    position: absolute;
+    inset: 0;
+    margin: auto; 
+    height: 83.33%; 
+    max-width: 75%; 
+    background: linear-gradient(to top right, #4f46e5, #0f766e, #c084fc);
+    filter: blur(118px); 
+    z-index: -1;
+}
+
+.file-upload-form {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-upload-label input {
+  display: none;
+}
+.file-upload-label svg {
+  height: 50px;
+  fill: #0e1118;
+  margin-bottom: 20px;
+}
+.file-upload-label {
+  cursor: pointer;
+  background-color: #ddd;
+  padding: 30px 70px;
+  border-radius: 40px;
+  border: 2px dashed #0e1118;
+  pointer-event: none;
+}
+.file-upload-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.file-upload-design > p {
+    color: black;
+}
+
+.browse-button {
+  background-color: #13171f;
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.3s;
+}
+.browse-button:hover {
+  background-color: rgb(14, 14, 14);
+}
