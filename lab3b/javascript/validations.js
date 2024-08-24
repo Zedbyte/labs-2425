@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let acceptTypes = "";
 
     switch (fileTypeSelect.value) {
+      case "text":
+        acceptTypes = ".txt";
+        break;
       case "pdf":
         acceptTypes = ".pdf";
         break;
@@ -44,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let isValid = false;
       switch (fileTypeSelect.value) {
+        case "text":
+          isValid = fileType === "text/plain";
+          break;
         case "pdf":
           isValid = fileType === "application/pdf";
           break;

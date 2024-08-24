@@ -9,6 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_upload']) && is
 
     $allowedExtensions = [];
     switch ($selectedType) {
+        case 'text':
+            $allowedExtensions = ['txt'];
+            break;
         case 'pdf':
             $allowedExtensions = ['pdf'];
             break;
@@ -53,6 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file_upload']) && is
                             <audio controls>
                                 <source src='<?php echo $file_path; ?>' type='audio/mp3'>Your browser does not support the audio element.
                             </audio>
+                        <?php } elseif ($selectedType == 'text') { ?>
+                            <object data="<?php echo $file_path ?>" type="text/plain" width="100%" height="100%">
+                            <p>Unable to display Text file. <a href="<?php echo $text_path ?>">Download</a> instead.</p>
+                            </object>
                         <?php } elseif ($selectedType == 'video') { ?>
                             <video width='100%' height='100%' controls>
                                 <source src='<?php echo $file_path; ?>' type='video/mp4'>Your browser does not support the video tag.

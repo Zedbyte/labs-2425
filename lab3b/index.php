@@ -21,6 +21,7 @@
           <h3 style="text-align:center;">Select File Type:</h3>
           <select name="file_type" id="file_type" required>
             <option value="">Select File Type</option>
+            <option value="text">Text</option>
             <option value="pdf">PDF</option>
             <option value="audio">Audio</option>
             <option value="image">Image</option>
