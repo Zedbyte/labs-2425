@@ -31,23 +31,33 @@
               <label for="text_file">Text File</label>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <input id="file" type="file" name="text_file" accept=".txt" multiple/>
               <label for="pdf_file">PDF File</label>
               <input id="file" type="file" name="pdf_file" accept=".pdf" multiple/>
 =======
 =======
 >>>>>>> image-file-upload
+=======
+>>>>>>> video-file-upload
               <input id="file" type="file" name="text_file" accept=".txt"/>
               <label for="pdf_file">PDF File</label>
               <input id="file" type="file" name="pdf_file" accept=".pdf"/>
               <label for="pdf_file">Audio File</label>
               <input id="file" type="file" name="audio_file" accept=".mp3"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> audio-file-upload
 =======
               <label for="image_file">Image File</label>
               <input id="file" type="file" name="image_file" accept="image/*"/>
 >>>>>>> image-file-upload
+=======
+              <label for="image_file">Image File</label>
+              <input id="file" type="file" name="image_file" accept="image/*"/>
+              <label for="video_file">Video File</label>
+              <input id="file" type="file" name="video_file" accept=".mp4"/>
+>>>>>>> video-file-upload
             </label>
               <p class="file-name" id="file-name">No file chosen</p>
             <br>

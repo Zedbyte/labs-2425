@@ -1,32 +1,52 @@
 <?php
 
+<<<<<<< HEAD
 if (isset($_FILES['pdf_file'])) {
+=======
+if (isset($_FILES)) {
+>>>>>>> video-file-upload
     $upload_directory = getcwd() . '/uploads/';
 
     $file_name_text = $_FILES['text_file']['name'];
     $file_name_pdf = $_FILES['pdf_file']['name'];
     $file_name_audio = $_FILES['audio_file']['name'];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     $file_name_image = $_FILES['image_file']['name'];
 >>>>>>> image-file-upload
+=======
+    $file_name_image = $_FILES['image_file']['name'];
+    $file_name_image = $_FILES['image_file']['name'];
+    $file_name_video = $_FILES['video_file']['name'];
+>>>>>>> video-file-upload
 
 
     $uploaded_file_text = $upload_directory . basename($file_name_text);
     $uploaded_file_pdf = $upload_directory . basename($file_name_pdf);
     $uploaded_file_audio = $upload_directory . basename($file_name_audio);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     $uploaded_file_image = $upload_directory . basename($file_name_image);
 >>>>>>> image-file-upload
+=======
+    $uploaded_file_image = $upload_directory . basename($file_name_image);
+    $uploaded_file_video = $upload_directory . basename($file_name_video);
+>>>>>>> video-file-upload
 
     $temporary_file_text = $_FILES['text_file']['tmp_name'];
     $temporary_file_pdf = $_FILES['pdf_file']['tmp_name'];
     $temporary_file_audio = $_FILES['audio_file']['tmp_name'];
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     $temporary_file_image = $_FILES['image_file']['tmp_name'];
 >>>>>>> image-file-upload
+=======
+    $temporary_file_image = $_FILES['image_file']['tmp_name'];
+    $temporary_file_video = $_FILES['video_file']['tmp_name'];
+>>>>>>> video-file-upload
 
     if (!file_exists($upload_directory)) {
         mkdir($upload_directory);
@@ -124,6 +144,9 @@ if (isset($_FILES['pdf_file'])) {
         $relative_path = 'uploads/';
         $audio_path = $relative_path . $file_name_audio;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> video-file-upload
 
         require './partials/header.php'
         ?>
@@ -154,7 +177,24 @@ if (isset($_FILES['pdf_file'])) {
                                 echo '</pre>';
                             ?>
 
+<<<<<<< HEAD
 =======
+=======
+                            <form method="GET" action="index.php">
+                                <input type="submit" value="Go Back">
+                            </form>
+                            <pre class="cpy">&copy; Mark Jerome Santos</pre>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
+            <?php
+    }
+    if (move_uploaded_file($temporary_file_image, $uploaded_file_image)) {
+        $relative_path = 'uploads/';
+        $image_path = $relative_path . $file_name_image;
+>>>>>>> video-file-upload
 
         require './partials/header.php'
         ?>
@@ -162,6 +202,7 @@ if (isset($_FILES['pdf_file'])) {
                 <div class="h-100 container">
                     <div class="h-100 grid">
                         <div class="file__container">
+<<<<<<< HEAD
                         <audio controls>
                                 <source src='<?php echo $audio_path; ?>' type='audio/mp3'>Your browser does not support the audio element.
                         </audio>
@@ -206,6 +247,8 @@ if (isset($_FILES['pdf_file'])) {
                 <div class="h-100 container">
                     <div class="h-100 grid">
                         <div class="file__container">
+=======
+>>>>>>> video-file-upload
                         <img class="file_image" src="<?php echo $image_path; ?>" alt="Uploaded Image"/>
                         </div>
                         <div class="metadata__container">
@@ -227,7 +270,54 @@ if (isset($_FILES['pdf_file'])) {
                                 echo '</pre>';
                             ?>
 
+<<<<<<< HEAD
 >>>>>>> image-file-upload
+=======
+                            <form method="GET" action="index.php">
+                                <input type="submit" value="Go Back">
+                            </form>
+                            <pre class="cpy">&copy; Mark Jerome Santos</pre>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
+            <?php
+    }
+    if (move_uploaded_file($temporary_file_video, $uploaded_file_video)) {
+        $relative_path = 'uploads/';
+        $video_path = $relative_path . $file_name_video;
+
+        require './partials/header.php'
+        ?>
+            <body>
+                <div class="h-100 container">
+                    <div class="h-100 grid">
+                        <div class="file__container">
+                            <video width='100%' height='100%' controls>
+                                <source src='<?php echo $video_path; ?>' type='video/mp4'>Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="metadata__container">
+                            <h4>This is the information of the Video file:</h4>
+                            <?php
+                                echo '<pre>';
+                                    echo '<ul>';
+                                    foreach ($_FILES as $fileKey => $fileInfo) {
+                                        echo '<li>';
+                                        echo '<strong>' . htmlspecialchars($fileKey) . ':</strong><br>';
+                                        echo '<ul>';
+                                        foreach ($fileInfo as $key => $value) {
+                                            echo '<li><strong>' . htmlspecialchars($key) . ':</strong> ' . htmlspecialchars($value) . '</li>';
+                                        }
+                                        echo '</ul>';
+                                        echo '</li>';
+                                    }
+                                    echo '</ul>';
+                                echo '</pre>';
+                            ?>
+
+>>>>>>> video-file-upload
                             <form method="GET" action="index.php">
                                 <input type="submit" value="Go Back">
                             </form>
