@@ -30,16 +30,24 @@
           <form method="POST" action="uploaded.php" enctype="multipart/form-data">
               <label for="text_file">Text File</label>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <input id="file" type="file" name="text_file" accept=".txt" multiple/>
               <label for="pdf_file">PDF File</label>
               <input id="file" type="file" name="pdf_file" accept=".pdf" multiple/>
 =======
+=======
+>>>>>>> image-file-upload
               <input id="file" type="file" name="text_file" accept=".txt"/>
               <label for="pdf_file">PDF File</label>
               <input id="file" type="file" name="pdf_file" accept=".pdf"/>
               <label for="pdf_file">Audio File</label>
               <input id="file" type="file" name="audio_file" accept=".mp3"/>
+<<<<<<< HEAD
 >>>>>>> audio-file-upload
+=======
+              <label for="image_file">Image File</label>
+              <input id="file" type="file" name="image_file" accept="image/*"/>
+>>>>>>> image-file-upload
             </label>
               <p class="file-name" id="file-name">No file chosen</p>
             <br>
