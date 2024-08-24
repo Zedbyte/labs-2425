@@ -29,9 +29,17 @@
           <h3 style="text-align:center;">Upload File</h3>
           <form method="POST" action="uploaded.php" enctype="multipart/form-data">
               <label for="text_file">Text File</label>
+<<<<<<< HEAD
               <input id="file" type="file" name="text_file" accept=".txt" multiple/>
               <label for="pdf_file">PDF File</label>
               <input id="file" type="file" name="pdf_file" accept=".pdf" multiple/>
+=======
+              <input id="file" type="file" name="text_file" accept=".txt"/>
+              <label for="pdf_file">PDF File</label>
+              <input id="file" type="file" name="pdf_file" accept=".pdf"/>
+              <label for="pdf_file">Audio File</label>
+              <input id="file" type="file" name="audio_file" accept=".mp3"/>
+>>>>>>> audio-file-upload
             </label>
               <p class="file-name" id="file-name">No file chosen</p>
             <br>
